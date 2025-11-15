@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Button, Input, Card } from '../components/UIComponents';
+import { BookOpen } from 'lucide-react';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -35,19 +36,24 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Welcome back</h2>
-          <p className="mt-2 text-sm text-gray-600">
+          <div className="flex justify-center mb-6">
+            <div className="bg-gradient-to-br from-primary-600 to-blue-600 text-white p-3 rounded-2xl shadow-lg shadow-primary-500/30">
+              <BookOpen size={32} strokeWidth={2.5} />
+            </div>
+          </div>
+          <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">Welcome back</h2>
+          <p className="mt-2 text-sm text-gray-600 font-medium">
             Or{' '}
-            <Link to="/register" className="font-medium text-primary-600 hover:text-primary-500">
+            <Link to="/register" className="text-primary-600 hover:text-primary-500 hover:underline">
               create a new account
             </Link>
           </p>
         </div>
 
-        <Card className="p-8">
+        <Card className="p-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <Input 
               label="Email Address" 
@@ -55,6 +61,7 @@ const Login = () => {
               required 
               value={email}
               onChange={e => setEmail(e.target.value)}
+              placeholder="you@example.com"
             />
             <div className="relative">
               <Input 
@@ -63,33 +70,34 @@ const Login = () => {
                 required 
                 value={password}
                 onChange={e => setPassword(e.target.value)}
+                placeholder="••••••••"
               />
               <div className="absolute right-0 top-0">
-                 <Link to="/forgot-password" className="text-xs font-medium text-primary-600 hover:text-primary-500">
+                 <Link to="/forgot-password" className="text-xs font-bold text-primary-600 hover:text-primary-500">
                   Forgot password?
                 </Link>
               </div>
             </div>
             
-            <Button type="submit" className="w-full py-3" isLoading={loading}>
+            <Button type="submit" className="w-full py-3 text-base shadow-primary-500/25 shadow-lg" isLoading={loading}>
               Sign in
             </Button>
           </form>
 
-          <div className="mt-6">
+          <div className="mt-8">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
+                <div className="w-full border-t border-gray-200"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">Quick Demo</span>
+                <span className="px-4 bg-white/80 backdrop-blur rounded-full text-gray-500 font-medium">Quick Demo Access</span>
               </div>
             </div>
-            <div className="mt-4 grid grid-cols-2 gap-3">
-              <Button variant="outline" size="sm" onClick={() => demoLogin('student')}>
+            <div className="mt-6 grid grid-cols-2 gap-4">
+              <Button variant="glass" size="sm" onClick={() => demoLogin('student')}>
                 Student Demo
               </Button>
-              <Button variant="outline" size="sm" onClick={() => demoLogin('instructor')}>
+              <Button variant="glass" size="sm" onClick={() => demoLogin('instructor')}>
                 Instructor Demo
               </Button>
             </div>

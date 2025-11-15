@@ -12,7 +12,7 @@ import InstructorProfile from './pages/InstructorProfile';
 
 // Protected Route Component
 interface ProtectedRouteProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   roles?: string[];
 }
 
